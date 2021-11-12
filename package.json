@@ -1,0 +1,25 @@
+{
+  "name": "appysnc-backend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Backend for AppSync",
+  "main": "index.js",
+  "scripts": {
+    "sls": "sls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serdarkaracay/appysnc-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serdarkaracay/appysnc-backend/issues"
+  },
+  "homepage": "https://github.com/serdarkaracay/appysnc-backend#readme",
+  "devDependencies": {
+    "serverless": "^2.66.1",
+    "serverless-appsync-plugin": "^1.12.0"
+  }
+}
