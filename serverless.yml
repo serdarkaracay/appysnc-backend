@@ -4,6 +4,7 @@ frameworkVersion: '2'
 plugins:
   - serverless-appsync-plugin
   - serverless-iam-roles-per-function
+  - serverless-export-env
 
 provider:
   name: aws
@@ -21,6 +22,7 @@ package:
 custom:
 # npm run sls -- -stage/s dev/prod
   stage: ${opt:stage, self:provider.stage}
+  region: ${opt:region, self:provider.region}
   appSync:
     - ${file(serverless.appsync-api.yml)}
 
@@ -98,5 +100,7 @@ resources:
         PreventUserExistenceErrors: ENABLED
 
   Outputs:
+    AwsRegion:
+      Value: ${self:custom.region}
     CognitoUserPoolId:
       Value: !Ref CognitoUserPool

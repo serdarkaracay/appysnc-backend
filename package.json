@@ -5,7 +5,9 @@
   "description": "Backend for AppSync",
   "main": "index.js",
   "scripts": {
-    "sls": "sls"
+    "sls": "sls",
+    "exportEnv": "sls export-env",
+    "integration-test": "jest --verbose ./__tests__/test_cases/integration"
   },
   "repository": {
     "type": "git",
@@ -19,9 +21,13 @@
   },
   "homepage": "https://github.com/serdarkaracay/appysnc-backend#readme",
   "devDependencies": {
+    "@types/jest": "^27.0.3",
     "aws-sdk": "^2.1029.0",
+    "dotenv": "^10.0.0",
+    "jest": "^27.3.1",
     "serverless": "^2.66.1",
     "serverless-appsync-plugin": "^1.12.0",
+    "serverless-export-env": "^2.0.0",
     "serverless-iam-roles-per-function": "^3.2.0"
   },
   "dependencies": {
