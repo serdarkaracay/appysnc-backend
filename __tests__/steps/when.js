@@ -1,6 +1,11 @@
 require('dotenv').config()
 const AWS = require('aws-sdk')
 
+const fs = require('fs')
+const velocityMapper = require('amplify-appsync-simulator/lib/velocity/value-mapper/mapper')
+const velocityTemplate = require('amplify-velocity-template')
+
+
 const we_invoke_confirmUserSignup = async (username,name,email) => {
 
 const handler = require('../../functions/confirm-user-signup').handler
@@ -70,7 +75,19 @@ const user_signup = async(password, name, email) => {
   }
 }
 
+
+const we_invoke_an_appsync_template = (templatePath, context) => {
+  const template = fs.readFileSync(templatePath, { encoding: 'utf-8' })
+  const ast = velocityTemplate.parse(template)
+  const compiler = new velocityTemplate.Compile(ast, {
+    valueMapper: velocityMapper.map,
+    escape: false
+  })
+  return JSON.parse(compiler.render(context))
+}
+
 module.exports = {
     we_invoke_confirmUserSignup,
-    user_signup
+    user_signup,
+    we_invoke_an_appsync_template
 }
