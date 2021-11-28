@@ -7,7 +7,7 @@ const handler = require('../../functions/confirm-user-signup').handler
 
 const event = {
     "version": "1",
-    "region": process.env.AWS_REGION,
+    "region": process.env.REGION,
     "userPoolId": process.env.COGNITO_USER_POOL_ID,
     "userName": username,
     "triggerSource": "PostConfirmation_ConfirmSignUp",
